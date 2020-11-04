@@ -32,8 +32,13 @@
         students VARCHAR(255),
         teachers VARCHAR(255),
         type_class ENUM("integral", "noturna"),
-        module ENUM(1,2,3,4,5,6,7),
+        module ENUM("1","2","3","4","5","6","7"),
         FOREIGN KEY (students) REFERENCES students(id),
         FOREIGN KEY (teachers) REFERENCES teacher(id)
     );
+```
+
+## 4. Tabela de relações entre alunos, turmas e professores
+
+```sql
 ```
