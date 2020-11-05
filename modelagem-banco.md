@@ -45,7 +45,4 @@ CREATE TABLE teacher_specialty(
 );
 
 
-
-
-
 ```
