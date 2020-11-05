@@ -1,44 +1,46 @@
 # Modelagem do banco de dados Labenu System.
 
-## 1. Tabela estudante
+## Todas as tabelas
 
 ```sql
-    CREATE TABLE students(
-        id VARCHAR(255) PRIMARY KEY UNIQUE,
-        name VARCHAR(255) NOT NULL,
-        email VARCHAR(255) NOT NULL,
-        birth_date DATE NOT NULL
-    );
-```
+CREATE TABLE mission(
+	id VARCHAR(255) PRIMARY KEY UNIQUE,
+	name VARCHAR(255) NOT NULL UNIQUE,        
+	start_date DATE NOT NULL,
+	end_date DATE NOT NULL,
+	type_class ENUM("integral", "noturna"),
+	module ENUM("1","2","3","4","5","6","7")
+);
 
-## 2. Tabela Docente
-```sql
-    CREATE TABLE teacher(
-        id VARCHAR(255) PRIMARY KEY UNIQUE,
-        name VARCHAR(255) NOT NULL,
-        email VARCHAR(255) NOT NULL,
-        birth_date DATE NOT NULL,
-        specialism ENUM("React", "Redux", "CSS", "TypeScript", "POO", "Backend")
-    );
-```
+CREATE TABLE teacher(
+	id VARCHAR(255) PRIMARY KEY UNIQUE,
+	name VARCHAR(255) NOT NULL,
+	email VARCHAR(255) NOT NULL,
+	birth_date DATE NOT NULL,
+    class VARCHAR(255) NOT NULL,
+    FOREIGN KEY (class) REFERENCES mission(id)
+);
 
-## 3. Tabela turma
-```sql
-    CREATE TABLE class(
-        id VARCHAR(255) PRIMARY KEY UNIQUE,
-        name VARCHAR(255) NOT NULL UNIQUE,        
-        start_date DATE NOT NULL,
-        end_date DATE NOT NULL,
-        students VARCHAR(255),
-        teachers VARCHAR(255),
-        type_class ENUM("integral", "noturna"),
-        module ENUM("1","2","3","4","5","6","7"),
-        FOREIGN KEY (students) REFERENCES students(id),
-        FOREIGN KEY (teachers) REFERENCES teacher(id)
-    );
-```
+CREATE TABLE students(
+	id VARCHAR(255) PRIMARY KEY UNIQUE,
+	name VARCHAR(255) NOT NULL,
+	email VARCHAR(255) NOT NULL,
+	birth_date DATE NOT NULL,
+    class VARCHAR(255) NOT NULL,
+    FOREIGN KEY (class) REFERENCES mission(id)    
+);
 
-## 4. Tabela de relações entre alunos, turmas e professores
+CREATE TABLE students_hobbies(
+	id VARCHAR(255) PRIMARY KEY UNIQUE,
+    hobbie VARCHAR(255) NOT NULL,
+    FOREIGN KEY (hobbie) REFERENCES students(id)
+);
 
-```sql
+CREATE TABLE teacher_speciality(
+	id VARCHAR(255) PRIMARY KEY UNIQUE,
+    teacher_id VARCHAR(255) NOT NULL,
+    speciality ENUM("React", "Redux", "CSS", "TypeScript", "POO", "Backend"),
+    FOREIGN KEY (teacher_id) REFERENCES teacher(id)
+);
+
 ```
