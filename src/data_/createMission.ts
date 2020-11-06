@@ -1,4 +1,3 @@
-import { SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS } from "constants"
 import { connection } from ".."
 
 export const createMission = async (
@@ -9,7 +8,12 @@ export const createMission = async (
     type_class: string,
     module: string
 ):Promise<void> => {
-    const newMission = await connection
-        .insert({id, name, start_date, end_date, type_class, module})
-        .into("mission")
+    try {
+        await connection
+            .insert({id, name, start_date, end_date, type_class, module})
+            .into("mission")
+            
+    } catch (error) {
+        return error
+    }
 }
