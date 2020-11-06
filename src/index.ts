@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import { postCreateStudent } from './endpoints_/postCreateStudent';
 import { postCreateMission } from './endpoints_/postCreateMission';
 import { createNewTeacher } from './endpoints_/createNewTeacher';
+import { patchStudentToClass } from './endpoints_/patchStudentToClass';
 
 
 dotenv.config();
@@ -28,6 +29,7 @@ app.use(cors());
 app.post("/createStudent", postCreateStudent)
 app.post("/createTeacher", createNewTeacher)
 app.post("/createMission", postCreateMission)
+app.patch("/addStudentToClass", patchStudentToClass)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
