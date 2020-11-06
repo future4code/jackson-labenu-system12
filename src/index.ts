@@ -5,9 +5,9 @@ import dotenv from 'dotenv';
 import { postCreateStudent } from './endpoints_/postCreateStudent';
 import { postCreateMission } from './endpoints_/postCreateMission';
 import { createNewTeacher } from './endpoints_/createNewTeacher';
+import { getStudentAgeById } from './endpoints_/getStudentAgeById';
 import { patchStudentToClass } from './endpoints_/patchStudentToClass';
 import { patchTeacherToClass } from './endpoints_/patchTeacherToClass';
-
 
 dotenv.config();
 
@@ -27,9 +27,12 @@ const app: Express = express();
 app.use(express.json());
 app.use(cors());
 
+app.get("/studentAge/:id", getStudentAgeById);
+
 app.post("/createStudent", postCreateStudent)
 app.post("/createTeacher", createNewTeacher)
 app.post("/createMission", postCreateMission)
+
 app.patch("/addStudentToClass", patchStudentToClass)
 app.patch("/addTeacherToClass", patchTeacherToClass)
 
