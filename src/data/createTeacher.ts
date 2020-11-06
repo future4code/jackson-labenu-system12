@@ -4,13 +4,12 @@ export async function createTeacher(
     id: string,
     name: string,
     email: string,
-    birthDate: string, 
+    birth_date: string, 
 ): Promise<void> {
     try { 
-        await connection.raw(`
-            INSERT INTO teacher (id, name, email, birth_date)
-            VALUES ("${id}", "${name}", "${email}", "${birthDate}");
-        `);
+        await connection
+        .insert({id, name, email, birth_date})
+        .into("teacher")  
     } catch (error) {
         console.log(error);
     };

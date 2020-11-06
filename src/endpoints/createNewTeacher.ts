@@ -1,10 +1,13 @@
 import { Request, Response } from "express";
 import { createTeacher } from "../data/createTeacher";
 import { Teacher } from "../types";
+import { v4 as uuidv4} from 'uuid'
 
 export const createNewTeacher = async (req: Request, res: Response): Promise<void> => {
     try {
-        const { id, name, email, birthDate }: Teacher = req.body;
+
+        const id = uuidv4();
+        const { name, email, birthDate }: Teacher = req.body;
         
         const [day, month, year] = birthDate.split("/");
         const convertedBirthDate: Date = new Date(`${year}-${month}-${day} (GMT-3)`);
