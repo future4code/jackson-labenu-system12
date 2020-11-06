@@ -12,4 +12,4 @@ export type Student = {
     email: string,
     birth_date: string,
     mission: string
-}
+};

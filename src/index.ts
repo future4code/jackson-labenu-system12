@@ -2,7 +2,7 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import knex from 'knex';
 import dotenv from 'dotenv';
-import { postCreateStudent } from './endpoints_/postCreateUser';
+import { postCreateStudent } from './endpoints_/postCreateStudent';
 import { postCreateMission } from './endpoints_/postCreateMission';
 import { createNewTeacher } from './endpoints_/createNewTeacher';
 
