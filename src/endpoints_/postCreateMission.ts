@@ -4,6 +4,8 @@ import { createMission } from "../data_/createMission";
 
 export const postCreateMission = async (req: Request, res: Response): Promise<void> => {
     try {
+        
+
         const [day, month, year] = req.body.start_date.split("/")
         const [end_day, end_month, end_year] = req.body.end_date.split("/")
 
@@ -13,6 +15,15 @@ export const postCreateMission = async (req: Request, res: Response): Promise<vo
         const end_date: Date = new Date(`${end_year}-${end_month}-${end_day}`)
         const type_class = req.body.type_class
         const module = req.body.module
+        const numberModule = Number(module)
+
+        if(!numberModule){
+            throw new Error("Verifique o módulo da turma. Deve ser um numero entre 1 a 7.")
+        }
+
+        if(numberModule < 1 || numberModule > 7){
+            throw new Error("Defina o módulo em que a turma está.")
+        }
 
         if (
             !name ||
@@ -24,10 +35,6 @@ export const postCreateMission = async (req: Request, res: Response): Promise<vo
 
         if (type_class !== ("integral" || "noturna")) {
             throw new Error("Defina o tipo da turma. Escolha entre integral ou noturna.")
-        }
-
-        if(module !== ("1" || "2" || "3" || "4" || "5" || "6" || "7")){
-            throw new Error("Defina o módulo em que a turma se encontra.")
         }
 
         await createMission(id, name, start_date, end_date, type_class, module)
