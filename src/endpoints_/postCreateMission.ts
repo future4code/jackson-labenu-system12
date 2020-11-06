@@ -10,7 +10,7 @@ export const postCreateMission = async (req: Request, res: Response): Promise<vo
         const [end_day, end_month, end_year] = req.body.end_date.split("/")
 
         const id = uuidv4()
-        const name = req.body.name
+        let name = req.body.name
         const start_date: Date = new Date(`${year}-${month}-${day}`)
         const end_date: Date = new Date(`${end_year}-${end_month}-${end_day}`)
         const type_class = req.body.type_class
@@ -33,8 +33,14 @@ export const postCreateMission = async (req: Request, res: Response): Promise<vo
             throw new Error("Preencha todos os campos.")            
         }
 
-        if (type_class !== ("integral" || "noturna")) {
-            throw new Error("Defina o tipo da turma. Escolha entre integral ou noturna.")
+        if (type_class !== "noturna") {
+            if(type_class !== "integral"){
+                throw new Error("Defina o tipo da turma. Escolha entre integral ou noturna.")
+            }
+        }
+
+        if(type_class === "noturna") {
+            name = `${req.body.name} na-night`
         }
 
         await createMission(id, name, start_date, end_date, type_class, module)
