@@ -2,9 +2,9 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import knex from 'knex';
 import dotenv from 'dotenv';
-import { postCreateUser } from './endpoints_/postCreateUser';
+import { postCreateStudent } from './endpoints_/postCreateStudent';
 import { postCreateMission } from './endpoints_/postCreateMission';
-import { createNewTeacher } from './endpoints/createNewTeacher';
+import { createNewTeacher } from './endpoints_/createNewTeacher';
 
 
 dotenv.config();
@@ -25,8 +25,8 @@ const app: Express = express();
 app.use(express.json());
 app.use(cors());
 
-app.post("/createUser", postCreateUser)
-app.post("/create/teacher", createNewTeacher)
+app.post("/createStudent", postCreateStudent)
+app.post("/createTeacher", createNewTeacher)
 app.post("/createMission", postCreateMission)
 
 const server = app.listen(process.env.PORT || 3003, () => {
