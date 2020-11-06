@@ -4,6 +4,7 @@ import knex from 'knex';
 import dotenv from 'dotenv';
 import { postCreateUser } from './endpoints_/postCreateUser';
 import { postCreateMission } from './endpoints_/postCreateMission';
+import { createNewTeacher } from './endpoints/createNewTeacher';
 
 
 dotenv.config();
@@ -25,7 +26,7 @@ app.use(express.json());
 app.use(cors());
 
 app.post("/createUser", postCreateUser)
-
+app.post("/create/teacher", createNewTeacher)
 app.post("/createMission", postCreateMission)
 
 const server = app.listen(process.env.PORT || 3003, () => {
