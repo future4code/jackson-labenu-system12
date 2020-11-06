@@ -17,8 +17,8 @@ CREATE TABLE teacher(
 	name VARCHAR(255) NOT NULL,
 	email VARCHAR(255) NOT NULL,
 	birth_date DATE NOT NULL,
-    class VARCHAR(255),
-    FOREIGN KEY (class) REFERENCES mission(id)
+    mission VARCHAR(255) NULL,
+    FOREIGN KEY (mission) REFERENCES mission(id)
 );
 
 CREATE TABLE students(
@@ -26,8 +26,8 @@ CREATE TABLE students(
 	name VARCHAR(255) NOT NULL,
 	email VARCHAR(255) NOT NULL,
 	birth_date DATE NOT NULL,
-    class VARCHAR(255),
-    FOREIGN KEY (class) REFERENCES mission(id)    
+    mission VARCHAR(255) NULL,
+    FOREIGN KEY (mission) REFERENCES mission(id)    
 );
 
 CREATE TABLE students_hobbies(
@@ -43,6 +43,5 @@ CREATE TABLE teacher_specialty(
     specialty ENUM("React", "Redux", "CSS", "TypeScript", "POO", "Backend"),
     FOREIGN KEY (teacher_id) REFERENCES teacher(id)
 );
-
 
 ```

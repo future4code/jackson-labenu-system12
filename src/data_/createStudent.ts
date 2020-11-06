@@ -6,10 +6,11 @@ export const createStudent = async (
     email: string,
     birth_date: string,
 ): Promise<void> => {
-    const newStudent= await connection.raw(`
-        INSERT INTO students (id, name, email, birth_date)
-        VALUES ("${id}", "${name}","${email}","${birth_date}");
-    `);
-
-    return newStudent;
+    try {
+        await connection
+       .insert({id, name, email, birth_date})
+       .into("students")        
+    } catch (error) {
+        return error
+    }
 };
