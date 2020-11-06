@@ -2,6 +2,7 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import knex from 'knex';
 import dotenv from 'dotenv';
+import { createNewTeacher } from './endpoints/createNewTeacher';
 
 dotenv.config();
 
@@ -20,6 +21,8 @@ const app: Express = express();
 
 app.use(express.json());
 app.use(cors());
+
+app.post("/create/teacher", createNewTeacher)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
