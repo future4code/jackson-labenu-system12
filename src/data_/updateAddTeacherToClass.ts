@@ -4,7 +4,7 @@ export const updateAddTeacherToClass = async (id: string, mission: string): Prom
     try {
         const pegaProfessor = await connection 
             .select("id")
-            .from("students")
+            .from("teacher")
             .where("id", id)
 
         const pegaTurma = await connection
@@ -20,7 +20,7 @@ export const updateAddTeacherToClass = async (id: string, mission: string): Prom
             throw new Error("Professor não encontrado")
         }
         
-        const result = await connection("students")
+        const result = await connection("teacher")
         .update({mission: mission /*aqui é um id*/})
         .where("id", id)
 
