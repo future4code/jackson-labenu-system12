@@ -8,7 +8,7 @@ export const deleteStudentFromAClass = async (req: Request, res: Response): Prom
         if(!studentId) {
             res.statusCode = 400;
             throw new Error("Insira um ID de estudante válido");
-        }
+        };
 
         await removeStudentFromAClass(studentId);
 
