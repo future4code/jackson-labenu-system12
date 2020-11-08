@@ -15,7 +15,7 @@ export const createNewStudentHobby = async (req: Request, res: Response): Promis
             throw new Error("Preencha o campo de hobby.");
         };
 
-        createStudentHobby(id, student_id, hobby);
+        await createStudentHobby(id, student_id, hobby);
 
         res.status(201).send("Hobby criado com sucesso!");
     } catch (error) {

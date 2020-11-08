@@ -11,6 +11,7 @@ import { patchTeacherToClass } from './endpoints_/patchTeacherToClass';
 import { getStudentsInAClass } from './endpoints_/getStudentsInAClass';
 import { createNewStudentHobby } from './endpoints_/createNewStudentHobby';
 import { getTeacherInAClass } from './endpoints_/getTeacherInAClass';
+import { getStudentsWithSameHobbies } from './endpoints_/getStudentsWithSameHobbies';
 
 
 dotenv.config();
@@ -34,6 +35,7 @@ app.use(cors());
 app.get("/studentAge/:id", getStudentAgeById);
 app.get("/missionStudents/:missionId", getStudentsInAClass);
 app.get("/missionTeacher/:missionId", getTeacherInAClass);
+app.get("/studentsWithSameHobbies/:hobby", getStudentsWithSameHobbies);
 
 app.post("/createStudent", postCreateStudent)
 app.post("/createTeacher", createNewTeacher)
