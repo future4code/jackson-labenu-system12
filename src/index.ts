@@ -8,6 +8,7 @@ import { createNewTeacher } from './endpoints_/createNewTeacher';
 import { getStudentAgeById } from './endpoints_/getStudentAgeById';
 import { patchStudentToClass } from './endpoints_/patchStudentToClass';
 import { patchTeacherToClass } from './endpoints_/patchTeacherToClass';
+import { getStudentsInAClass } from './endpoints_/getStudentsInAClass';
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/studentAge/:id", getStudentAgeById);
+app.get("/missionStudents/:missionId", getStudentsInAClass)
 
 app.post("/createStudent", postCreateStudent)
 app.post("/createTeacher", createNewTeacher)
