@@ -9,6 +9,7 @@ import { getStudentAgeById } from './endpoints_/getStudentAgeById';
 import { patchStudentToClass } from './endpoints_/patchStudentToClass';
 import { patchTeacherToClass } from './endpoints_/patchTeacherToClass';
 import { getStudentsInAClass } from './endpoints_/getStudentsInAClass';
+import { createNewStudentHobby } from './endpoints_/createNewStudentHobby';
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ app.get("/missionStudents/:missionId", getStudentsInAClass)
 app.post("/createStudent", postCreateStudent)
 app.post("/createTeacher", createNewTeacher)
 app.post("/createMission", postCreateMission)
+app.post("/createStudentHobby/:id", createNewStudentHobby);
 
 app.patch("/addStudentToClass", patchStudentToClass)
 app.patch("/addTeacherToClass", patchTeacherToClass)
