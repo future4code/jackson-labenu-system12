@@ -12,6 +12,7 @@ import { getStudentsInAClass } from './endpoints_/getStudentsInAClass';
 import { createNewStudentHobby } from './endpoints_/createNewStudentHobby';
 import { getTeacherInAClass } from './endpoints_/getTeacherInAClass';
 import { getStudentsWithSameHobbies } from './endpoints_/getStudentsWithSameHobbies';
+import { deleteStudentFromAClass } from './endpoints_/deleteStudentFromAClass';
 
 
 dotenv.config();
@@ -44,6 +45,8 @@ app.post("/createStudentHobby/:id", createNewStudentHobby);
 
 app.patch("/addStudentToClass", patchStudentToClass)
 app.patch("/addTeacherToClass", patchTeacherToClass)
+
+app.delete("/removeStudentFromAClass/:studentId", deleteStudentFromAClass)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
