@@ -15,6 +15,7 @@ import { getStudentsWithSameHobbies } from './endpoints_/getStudentsWithSameHobb
 import { deleteStudentFromAClass } from './endpoints_/deleteStudentFromAClass';
 import { deleteTeacherFromAClass } from './endpoints_/deleteTeacherFromAClass';
 import { deleteStudent } from './endpoints_/deleteStudent';
+import { putChangeStudent } from './endpoints_/putChangeStudent';
 
 
 dotenv.config();
@@ -47,6 +48,7 @@ app.post("/createStudentHobby/:id", createNewStudentHobby);
 
 app.patch("/addStudentToClass", patchStudentToClass);
 app.patch("/addTeacherToClass", patchTeacherToClass);
+app.put("/changeMission/:id", putChangeStudent);
 
 app.delete("/removeStudent/:id", deleteStudent);
 app.delete("/removeStudentFromAClass/:studentId", deleteStudentFromAClass);
