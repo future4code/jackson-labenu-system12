@@ -14,6 +14,7 @@ import { getTeacherInAClass } from './endpoints_/getTeacherInAClass';
 import { getStudentsWithSameHobbies } from './endpoints_/getStudentsWithSameHobbies';
 import { deleteStudentFromAClass } from './endpoints_/deleteStudentFromAClass';
 import { deleteTeacherFromAClass } from './endpoints_/deleteTeacherFromAClass';
+import { deleteStudent } from './endpoints_/deleteStudent';
 
 
 dotenv.config();
@@ -39,16 +40,17 @@ app.get("/missionStudents/:missionId", getStudentsInAClass);
 app.get("/missionTeacher/:missionId", getTeacherInAClass);
 app.get("/studentsWithSameHobbies/:hobby", getStudentsWithSameHobbies);
 
-app.post("/createStudent", postCreateStudent)
-app.post("/createTeacher", createNewTeacher)
-app.post("/createMission", postCreateMission)
+app.post("/createStudent", postCreateStudent);
+app.post("/createTeacher", createNewTeacher);
+app.post("/createMission", postCreateMission);
 app.post("/createStudentHobby/:id", createNewStudentHobby);
 
-app.patch("/addStudentToClass", patchStudentToClass)
-app.patch("/addTeacherToClass", patchTeacherToClass)
+app.patch("/addStudentToClass", patchStudentToClass);
+app.patch("/addTeacherToClass", patchTeacherToClass);
 
-app.delete("/removeStudentFromAClass/:studentId", deleteStudentFromAClass)
-app.delete("/removeTeacherFromAClass/:teacherId", deleteTeacherFromAClass)
+app.delete("/removeStudent/:id", deleteStudent);
+app.delete("/removeStudentFromAClass/:studentId", deleteStudentFromAClass);
+app.delete("/removeTeacherFromAClass/:teacherId", deleteTeacherFromAClass);
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
